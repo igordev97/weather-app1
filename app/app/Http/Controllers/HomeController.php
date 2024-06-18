@@ -11,7 +11,7 @@ class HomeController extends Controller
 
     public function loadCities(){
         $title = 'Weather App';
-        $cities = CityModel::orderBy('name','desc')->get();
+        $cities = CityModel::orderBy('name','asc')->get();
         $day = date('l');
         $time = date('H:i');
         return view('welcome', compact('title','cities','day','time'));

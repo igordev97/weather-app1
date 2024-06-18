@@ -7,14 +7,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[HomeController::class,'loadCities'])->name('home');
 Route::get('/contact')->name('contact');
-Route::view('/admin/add-city','add-city',['title'=>'Add new city'])->middleware('auth')->name('city.new');
+Route::view('/admin/add-city','add-city',['title'=>'Add new city'])->middleware('auth',\App\Http\Middleware\AdminCheck::class)->name('city.new');
 Route::post('/admin/add-city',[CityController::class,'addCity'])->name('city.add');
-Route::get('/admin/edit',[CityController::class,'editLoader'])->middleware('auth')->name('edit');
+Route::get('/admin/edit',[CityController::class,'editLoader'])->middleware('auth',\App\Http\Middleware\AdminCheck::class)->name('edit');
 
 
-Route::get('/admin/edit/city/{city}',[CityController::class,'updateCity'])->middleware('auth')->name('edit.update');
-Route::get('/admin/edit/delete/{city}',[CityController::class,'deleteCity'])->middleware('auth')->name('edit.delete');
+Route::get('/admin/edit/city/{city}',[CityController::class,'updateCity'])->middleware('auth',\App\Http\Middleware\AdminCheck::class)->name('edit.update');
+Route::get('/admin/edit/delete/{city}',[CityController::class,'deleteCity'])->middleware('auth',\App\Http\Middleware\AdminCheck::class)->name('edit.delete');
 Route::post('/admin/edit/city/save/{city}',[CityController::class,'saveUpdate'])->name('city.save');
+
+//Search route
+
+Route::get('/search',[\App\Http\Controllers\SearchController::class,'search'])->name('search');
+
+
+//Contact
+Route::get('/contact',[\App\Http\Controllers\ContactController::class,'index'])->name('contact');
+Route::post('/contact/send',[\App\Http\Controllers\ContactController::class,'send'])->name('contact.send');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

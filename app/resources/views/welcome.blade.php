@@ -1,8 +1,9 @@
 @extends('layouts.layout')
 @section('main')
     <div class="container">
-                <h1 class="display-1">Hello world</h1>
-        <div class="row">
+                <h1 class="display-2 text-center">Weather app</h1>
+
+        <div class="row mt-5">
             <div class="col-12 d-flex flex-wrap justify-content-center gap-2 ">
 
                    @foreach($cities as $city)

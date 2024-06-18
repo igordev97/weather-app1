@@ -22,9 +22,7 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{route('home')}}">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Cities
@@ -37,8 +35,9 @@
                     <a class="nav-link" href="{{route('contact')}}">Contact</a>
                 </li>
             </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex" role="search" action="{{route('search')}}" method="get"  >
+                @csrf
+                <input class="form-control me-2" type="search" placeholder="Find your city" aria-label="Search" name="search">
                 <button class="btn btn-outline-info" type="submit">Search</button>
             </form>
         </div>
