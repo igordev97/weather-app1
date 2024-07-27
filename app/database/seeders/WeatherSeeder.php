@@ -46,7 +46,7 @@ class WeatherSeeder extends Seeder
         $this->command->getOutput()->info("Uspesno ste dodali novi grad u bazi");
 
 
-
+//Domaci je zavrsen
 
 
 
