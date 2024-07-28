@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CityModel;
+use App\Models\WeatherModel;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,6 +15,8 @@ class HomeController extends Controller
         $cities = CityModel::orderBy('name','asc')->get();
         $day = date('l');
         $time = date('H:i');
-        return view('welcome', compact('title','cities','day','time'));
+
+        $allWeather = WeatherModel::all();
+        return view('welcome', compact('title','cities','day','time','allWeather'));
     }
 }
