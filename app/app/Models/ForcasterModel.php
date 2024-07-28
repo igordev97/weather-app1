@@ -14,4 +14,11 @@ class ForcasterModel extends Model
         'temperature',
         'date'
     ];
+
+    const WEATHER_TYPE = ['sunny','rain','storm','snow','cloudy'];
+
+
+    public function city(){
+        return $this->hasOne(CitiesModel::class, 'id', 'city_id');
+    }
 }

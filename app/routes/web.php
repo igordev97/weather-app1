@@ -24,7 +24,7 @@ Route::get('/search',[\App\Http\Controllers\SearchController::class,'search'])->
 //Contact
 Route::get('/contact',[\App\Http\Controllers\ContactController::class,'index'])->name('contact');
 Route::post('/contact/send',[\App\Http\Controllers\ContactController::class,'send'])->name('contact.send');
-
+Route::get('/forcasts/{city:name}',[\App\Http\Controllers\ForcastsController::class,'loadCity'])->name('forcasts.single');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

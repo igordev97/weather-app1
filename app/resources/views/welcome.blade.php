@@ -12,9 +12,7 @@
                    @endforeach
 
 
-                    @foreach($allWeather as $weather)
-                        <p>Trenutno u gradu {{$weather->city->name}} je {{$weather->temperature}} stepeni</p>
-                    @endforeach
+
             </div>
         </div>
     </div>

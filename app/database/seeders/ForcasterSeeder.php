@@ -19,12 +19,17 @@ class ForcasterSeeder extends Seeder
         //
         $faker = Factory::create();
         $cities = CitiesModel::all();
+
         foreach ($cities as $city) {
             for($i=0;$i<5;$i++){
+                $date = Carbon::now()->addDays(rand(1,30));
                 ForcasterModel::create([
                     'city_id' => $city->id,
                     'temperature' => rand(10,30),
-                    'date' => Carbon::now()->addDays(rand(1,30)),
+                    'date' =>$date,
+                    'weather_type'=>ForcasterModel::WEATHER_TYPE[rand(0,4)],
+                    'probability' => rand(0,100),
+                    'dayWeek' =>Carbon::parse($date)->format('l')
                 ]);
             }
         }

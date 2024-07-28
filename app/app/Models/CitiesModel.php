@@ -12,4 +12,9 @@ class CitiesModel extends Model
     protected $fillable = [
         'name'
     ];
+
+
+    public function forcasts(){
+        return $this->hasMany(ForcasterModel::class,'city_id','id');
+    }
 }
