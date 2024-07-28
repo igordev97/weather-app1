@@ -12,7 +12,9 @@ class ForcasterModel extends Model
     protected $fillable = [
         'city_id',
         'temperature',
-        'date'
+        'date',
+        'probability',
+        'dayWeek'
     ];
 
     const WEATHER_TYPE = ['sunny','rain','storm','snow','cloudy'];
